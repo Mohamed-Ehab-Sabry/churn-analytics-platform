@@ -11,7 +11,7 @@ db = client["telecom_data"]
 
 collection = db["customer_reviews"]
 
-with open("customer_reviews.jsonl", "r", encoding="utf-8") as f:
+with open("data/customer_reviews.jsonl", "r", encoding="utf-8") as f:
     data = [json.loads(line) for line in f]
     collection.insert_many(data)
 
