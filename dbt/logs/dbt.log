@@ -1,0 +1,68 @@
+[0m18:13:23.196367 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe9d7a6ae40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe9d7bd3110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe9d8477ad0>]}
+
+
+============================== 18:13:23.201685 | 1f520bfa-3700-4fc8-91fb-2f2dcd47a23b ==============================
+[0m18:13:23.201685 [info ] [MainThread]: Running with dbt=1.9.3
+[0m18:13:23.202383 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/codespace/.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt init churn-analytics-platform', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m18:13:23.215252 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse logging event dictionary. Failed to parse dir field: expected string or bytes-like object, got 'PosixPath'.. Dictionary: {'dir': PosixPath('/home/codespace/.dbt')}
+[0m18:13:23.215793 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m18:16:37.927284 [error] [MainThread]: Encountered an error:
+
+[0m18:16:37.932538 [error] [MainThread]: Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dbt/cli/requires.py", line 153, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dbt/cli/requires.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dbt/cli/main.py", line 477, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dbt/task/init.py", line 324, in run
+    project_name = self.get_valid_project_name()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dbt/task/init.py", line 278, in get_valid_project_name
+    name = click.prompt("Enter a name for your project (letters, digits, underscore)")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m18:16:37.934527 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 194.7926, "process_in_blocks": "62152", "process_kernel_time": 0.238132, "process_mem_max_rss": "94520", "process_out_blocks": "16", "process_user_time": 1.493645}
+[0m18:16:37.935459 [debug] [MainThread]: Command `dbt init` failed at 18:16:37.935301 after 194.79 seconds
+[0m18:16:37.936015 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe9d7aa2ba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe9d797e450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe9d797e4b0>]}
+[0m18:16:37.936512 [debug] [MainThread]: Flushing usage events
+[0m18:16:38.321772 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:17:31.874187 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x727ec980ad80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x727ec994c5c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x727ec7dd3560>]}
+
+
+============================== 18:17:31.878969 | 52d01e53-eb16-42c5-94ee-32db801ed75f ==============================
+[0m18:17:31.878969 [info ] [MainThread]: Running with dbt=1.9.3
+[0m18:17:31.880091 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/codespace/.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt init churn_analytics_platform', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m18:17:31.893086 [debug] [MainThread]: Starter project path: /usr/local/python/3.12.1/lib/python3.12/site-packages/dbt/include/starter_project
+[0m18:17:31.899146 [info ] [MainThread]: 
+Your new dbt project "churn_analytics_platform" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m18:17:31.899879 [info ] [MainThread]: Setting up your profile.
+[0m18:17:36.079235 [info ] [MainThread]: Profile churn_analytics_platform written to /home/codespace/.dbt/profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m18:17:36.080509 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 4.2637973, "process_in_blocks": "29776", "process_kernel_time": 0.236524, "process_mem_max_rss": "113168", "process_out_blocks": "80", "process_user_time": 1.553875}
+[0m18:17:36.081166 [debug] [MainThread]: Command `dbt init` succeeded at 18:17:36.081051 after 4.26 seconds
+[0m18:17:36.081688 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x727ec7996f30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x727ec8358d40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x727ec7976900>]}
+[0m18:17:36.082239 [debug] [MainThread]: Flushing usage events
+[0m18:17:36.427722 [debug] [MainThread]: An error was encountered while trying to flush usage events
