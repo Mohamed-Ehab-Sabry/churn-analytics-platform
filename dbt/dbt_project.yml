@@ -1,0 +1,23 @@
+name: churn_analytics_platform
+version: 1.0
+profile: churn_analytics_platform
+
+
+# المسارات اللي dbt هيقرأ منها الموديلات
+model-paths: ["models"]
+
+# المسار اللي هيتحفظ فيه كل نتائج التشغيل
+target-path: "target"
+
+# مسار اللوجات
+log-path: "logs"
+
+# إعدادات بسيطة للموديلات
+models:
+  churn_analytics_platform:
+    staging:
+      materialized: table
+    intermediate:
+      materialized: table
+    marts:
+      materialized: table
