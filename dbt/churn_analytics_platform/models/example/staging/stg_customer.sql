@@ -5,5 +5,6 @@ select
     tenure,
     MonthlyCharges as monthly_charges,
     TotalCharges as total_charges,
-    churn
+    churn,
+   -- zip_code
 from {{ source('raw', 'customer_churn_data') }}
