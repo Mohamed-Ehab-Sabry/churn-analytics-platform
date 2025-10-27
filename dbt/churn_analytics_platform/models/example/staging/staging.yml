@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    tables:
+      - name: customer_churn_data
+        identifier: customer_churn_data
+      - name: zip_population
+        identifier: zip_population
