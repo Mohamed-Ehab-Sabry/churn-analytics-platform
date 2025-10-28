@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_customer_with_location
+    description: "Customer data enriched with location and population"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: area_population
+        description: "Population in customer's zip code area"
+
+  - name: int_customer_metrics
+    description: "Customer-level KPIs and metrics"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: estimated_lifetime_value
+        description: "Estimated customer lifetime value based on contract"
+      - name: service_adoption_score
+        description: "Number of services subscribed (0-7)"
+        tests:
+          - accepted_values:
+              values: [0, 1, 2, 3, 4, 5, 6, 7]
+      - name: churn_risk_level
+        description: "Risk level based on contract type"
+        tests:
+          - accepted_values:
+              values: ['High', 'Medium', 'Low']
+
+  - name: int_churn_analysis
+    description: "Aggregated churn analysis by segments"
+    columns:
+      - name: churn_rate_pct
+        description: "Churn rate percentage"
+      - name: lost_monthly_revenue
+        description: "Monthly revenue lost due to churn"
