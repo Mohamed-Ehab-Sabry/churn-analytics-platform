@@ -1,0 +1,61 @@
+version: 2
+models:
+  - name: dim_customer
+    description: "Customer Dimension Table (Static attributes)"
+    columns:
+      - name: customer_sk
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_geography
+    description: "Geography Dimension Table"
+    columns:
+      - name: geography_sk
+        tests:
+          - unique
+          - not_null
+      - name: zip_code
+        tests:
+          - unique
+          - not_null
+          
+  - name: dim_service
+    description: "Service Dimension Table"
+    columns:
+      - name: service_sk
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_churn
+    description: "Churn Fact Table (Measures and Keys)"
+    columns:
+      - name: customer_sk
+        tests:
+          - not_null
+          # التأكد من تكامل العلاقة (جميع المفاتيح موجودة في جدول dim_customer)
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_sk
+      - name: geography_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: geography_sk
+      - name: service_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_service')
+              field: service_sk
+      - name: churn_flag
+        description: "1 if customer churned, 0 otherwise"
+        tests:
+          - accepted_values:
+              values: [0, 1]
