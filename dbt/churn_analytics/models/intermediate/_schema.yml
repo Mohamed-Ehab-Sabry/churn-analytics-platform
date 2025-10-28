@@ -1,5 +1,4 @@
 version: 2
-
 models:
   - name: int_customer_with_location
     description: "Customer data enriched with location and population"
@@ -7,6 +6,9 @@ models:
       - name: customer_id
         tests:
           - unique
+          - not_null
+      - name: zip_code
+        tests:
           - not_null
       - name: area_population
         description: "Population in customer's zip code area"
@@ -18,23 +20,38 @@ models:
         tests:
           - unique
           - not_null
-      - name: estimated_lifetime_value
-        description: "Estimated customer lifetime value based on contract"
+      - name: monthly_charges
+        tests:
+          - not_null
+          - dbt_utils.at_least_one
+          # تم حذف dbt_utils.number_type
       - name: service_adoption_score
         description: "Number of services subscribed (0-7)"
         tests:
-          - accepted_values:
-              values: [0, 1, 2, 3, 4, 5, 6, 7]
+          # تم تصحيح الصياغة: إضافة علامات الاقتباس حول التعبير
+          - dbt_utils.expression_is_true:
+              expression: 'service_adoption_score >= 0 and service_adoption_score <= 7'
       - name: churn_risk_level
-        description: "Risk level based on contract type"
         tests:
           - accepted_values:
               values: ['High', 'Medium', 'Low']
+      - name: has_churned
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
 
   - name: int_churn_analysis
     description: "Aggregated churn analysis by segments"
     columns:
+      - name: contract_type
+        tests:
+          - not_null
       - name: churn_rate_pct
-        description: "Churn rate percentage"
-      - name: lost_monthly_revenue
-        description: "Monthly revenue lost due to churn"
+        description: "Churn rate percentage (0-100)"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
