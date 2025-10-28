@@ -1,8 +1,8 @@
-name: 'churn_analytics_platform'
+name: 'churn_analytics'
 version: '1.0.0'
 config-version: 2
 
-profile: 'churn_analytics_platform'
+profile: 'churn_analytics'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -17,8 +17,7 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  churn_analytics_platform:
-    +schema: staging
+  churn_analytics:
     staging:
       +materialized: view
       +tags: ['staging']

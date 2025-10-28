@@ -2,40 +2,34 @@ version: 2
 
 sources:
   - name: churn_raw
-    description: "Raw data loaded into DuckDB warehouse"
-    database: churn_warehouse
+    description: "Raw data from DuckDB warehouse"
     schema: main
     tables:
       - name: customer_churn_data
         description: "Customer demographics and churn data"
         columns:
           - name: customerID
-            description: "Unique customer identifier"
-            data_tests:
+            tests:
               - unique
               - not_null
-          
           - name: Churn
-            description: "Customer churn status (Yes/No)"
-            data_tests:
+            tests:
               - accepted_values:
                   values: ['Yes', 'No']
       
       - name: customer_location
-        description: "Customer geographic location"
         columns:
-          - name: customerID
-            data_tests:
+          - name: customerid
+            tests:
               - unique
               - not_null
       
       - name: zip_population
-        description: "Population data by zip code"
         columns:
-          - name: Zip_Code
-            data_tests:
+          - name: zip
+            tests:
               - unique
               - not_null
       
       - name: customer_reviews
-        description: "Customer feedback and reviews"
+        description: "Customer reviews"

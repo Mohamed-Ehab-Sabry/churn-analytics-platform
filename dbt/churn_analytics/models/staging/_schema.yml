@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_customer_churn
+    description: "Cleaned customer churn data"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: has_churned
+        tests:
+          - not_null
+      - name: monthly_charges
+        tests:
+          - not_null
+
+  - name: stg_customer_location
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_zip_population
+    columns:
+      - name: zip_code
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_customer_reviews
+    description: "Customer reviews"

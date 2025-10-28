@@ -1,8 +1,0 @@
-version: 2
-
-sources:
-  - name: main
-    tables:
-      - name: customer_churn_data
-      - name: customer_location
-      - name: zip_population
