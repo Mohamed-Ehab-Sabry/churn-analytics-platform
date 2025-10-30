@@ -194,6 +194,62 @@ Add data volume at each stage:
 - **Color coding** for different data types (structured, semi-structured)
 - **Annotations** for transformation logic
 
+```mermaid
+graph TD
+    %% === EXTRACTION STAGE ===
+    subgraph Extraction [Extraction Stage]
+        MySQL[(MySQL Tables - 3)]
+        MongoDB[(MongoDB Collection - 1)]
+        CSVs[(CSV Files - 4)]
+        RawData[[Raw Data - about 7,000 records]]
+        MySQL --> RawData
+        MongoDB --> RawData
+        CSVs --> RawData
+    end
+
+    %% === LOADING STAGE ===
+    subgraph Loading [Loading Stage]
+        PythonScripts[Python Extraction Scripts]
+        DuckDBRaw[(DuckDB Raw Tables - 4)]
+        RawData --> PythonScripts --> DuckDBRaw
+    end
+
+    %% === STAGING STAGE ===
+    subgraph Staging [Staging Stage]
+        DbtStaging[dbt Staging Models - data cleaning]
+        StagingViews[[Staging Views - 4]]
+        DuckDBRaw --> DbtStaging --> StagingViews
+    end
+
+    %% === INTERMEDIATE STAGE ===
+    subgraph Intermediate [Intermediate Stage]
+        DbtIntermediate[dbt Intermediate Models - joins and calculations]
+        IntermediateViews[[Intermediate Views - 3]]
+        StagingViews --> DbtIntermediate --> IntermediateViews
+    end
+
+    %% === MARTS STAGE ===
+    subgraph Marts [Marts Stage]
+        DbtMarts[dbt Mart Models - dimensional modeling]
+        MartTables[[Analytical Tables - 3 dimensions + 1 fact]]
+        IntermediateViews --> DbtMarts --> MartTables
+    end
+
+    %% === VISUALIZATION STAGE ===
+    subgraph Visualization [Visualization Stage]
+        DashApp[Dash SQL Queries and Charts]
+        KPIs[[Interactive KPIs and Visuals]]
+        MartTables --> DashApp --> KPIs
+    end
+
+    %% === COLORS ===
+    style Extraction fill:#e1f5ff
+    style Loading fill:#fff4e1
+    style Staging fill:#fff8e1
+    style Intermediate fill:#f3e5f5
+    style Marts fill:#e8f5e9
+    style Visualization fill:#fce4ec
+```
 ---
 
 ## 3. Entity Relationship Diagram (ERD)
@@ -256,6 +312,8 @@ Place `fact_churn` in the center with dimension tables around it in a star patte
 - **DBeaver** - Can generate ERD from DuckDB
 - **Draw.io** - Manual creation with ERD shapes
 - **PlantUML** - Code-based ERD
+
+  <img width="1359" height="660" alt="churn-analytics-platform" src="https://github.com/user-attachments/assets/8e2f7628-8fcf-4af9-be59-b0a1bdc90509" />
 
 ### Template (dbdiagram.io syntax)
 
