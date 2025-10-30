@@ -42,7 +42,7 @@ The repository is organized as follows:
 ├── dbt/                  # The complete dbt project for data transformation
 ├── airflow/              # Airflow DAGs for orchestrating the pipeline
 ├── dash/                 # The Dash application for the visualization dashboard
-├── docs/                 # Project documentation and setup guides
+├── docs/                 # Project documentation and setup guides (see docs/TECHNICAL.md, SETUP.md, DATA_DICTIONARY.md)
 └── .env.example          # Example environment file for credentials
 ```
 
