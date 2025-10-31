@@ -10,7 +10,8 @@ import plotly.express as px
 # -----------------------------
 # Configuration
 # -----------------------------
-DUCKDB_PATH = r"C:\Users\COMPUMARTS\Desktop\dashboard\churn_warehouse.duckdb"
+DUCKDB_PATH = "/workspaces/churn-analytics-platform/duckdb/churn_warehouse.duckdb"
+
 
 # -----------------------------
 # Load data
