@@ -367,6 +367,8 @@ Table dim_service {
 ### Purpose
 Visualizes the dependencies between dbt models, showing the transformation flow from staging to marts.
 
+<img width="1280" height="665" alt="image" src="https://github.com/user-attachments/assets/c67c0c86-2f99-4545-8178-16aa5acbbdb3" />
+
 ### How to Generate
 
 #### Automated Generation (Recommended)
